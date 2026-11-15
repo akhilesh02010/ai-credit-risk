@@ -1,0 +1,82 @@
+{
+  "split": {
+    "strategy": "approximately stratified 60/20/20 train/validation/test; exact feature profiles grouped within one split",
+    "random_state": 42,
+    "train_rows": 17999,
+    "validation_rows": 6001,
+    "test_rows": 6000,
+    "repeated_feature_profiles": 56,
+    "train_default_rate": 0.2211789543863548,
+    "validation_default_rate": 0.22129645059156808,
+    "test_default_rate": 0.22116666666666668
+  },
+  "selection": {
+    "model_metric": "validation PR-AUC",
+    "selected_model": "xgboost",
+    "threshold_rule": "minimum validation cost with false-negative:false-positive = 5:1",
+    "selected_threshold": 0.39
+  },
+  "validation_probability_metrics": {
+    "logistic_regression": {
+      "pr_auc": 0.4942162301772522,
+      "roc_auc": 0.7243411909998221,
+      "brier_score": 0.20640689963235756
+    },
+    "xgboost": {
+      "pr_auc": 0.5707785462842966,
+      "roc_auc": 0.7798633008387068,
+      "brier_score": 0.17566697299480438
+    }
+  },
+  "test_metrics": {
+    "logistic_regression": {
+      "pr_auc": 0.5029455304308678,
+      "roc_auc": 0.7205683502091818,
+      "brier_score": 0.20645954861797067,
+      "at_0_50": {
+        "threshold": 0.5,
+        "precision": 0.3700440528634361,
+        "recall": 0.6330067822155238,
+        "f1": 0.4670558798999166,
+        "specificity": 0.6939867322918896,
+        "true_negatives": 3243,
+        "false_positives": 1430,
+        "false_negatives": 487,
+        "true_positives": 840
+      }
+    },
+    "xgboost": {
+      "pr_auc": 0.5587791744657216,
+      "roc_auc": 0.7868556092971682,
+      "brier_score": 0.17467834055423737,
+      "at_0_50": {
+        "threshold": 0.5,
+        "precision": 0.47632629777524244,
+        "recall": 0.6292388847023361,
+        "f1": 0.5422077922077922,
+        "specificity": 0.8035523218489193,
+        "true_negatives": 3755,
+        "false_positives": 918,
+        "false_negatives": 492,
+        "true_positives": 835
+      }
+    }
+  },
+  "test_constant_baseline": {
+    "pr_auc": 0.22116666666666668,
+    "roc_auc": 0.5,
+    "brier_score": 0.17225197237321027
+  },
+  "selected_model_test_at_selected_threshold": {
+    "threshold": 0.39,
+    "precision": 0.3809702895825498,
+    "recall": 0.7633760361718162,
+    "f1": 0.5082789764174611,
+    "specificity": 0.6477637491975177,
+    "true_negatives": 3027,
+    "false_positives": 1646,
+    "false_negatives": 314,
+    "true_positives": 1013
+  },
+  "disclosure": "The final test set was not used for preprocessing, fitting, model selection, or threshold selection. Test metrics compare locked candidates and should not be used for further tuning."
+}

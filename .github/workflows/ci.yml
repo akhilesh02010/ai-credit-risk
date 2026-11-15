@@ -1,0 +1,28 @@
+name: Project checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: "0.13.8"
+      - name: Install locked environment
+        run: make setup
+      - name: Lint and unit tests
+        run: make check
+      - name: Reproduce data, model comparison, SHAP, and SQL
+        run: make all
+      - name: Test generated dashboard artifacts
+        run: make test
+      - name: Execute notebooks
+        run: make notebooks

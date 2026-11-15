@@ -1,0 +1,34 @@
+# Python and uv
+.venv/
+.uv-cache/
+.uv-python/
+.jupyter/
+.jupyter-data/
+.jupyter-runtime/
+.ipython/
+.matplotlib-cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Downloaded data, trained models, and row-level generated artifacts
+data/raw/*
+!data/raw/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+models/*
+!models/.gitkeep
+reports/test_predictions.csv
+reports/split_manifest.csv
+
+# Local UI and OS files
+.streamlit/secrets.toml
+.env
+.env.*
+!.env.example
+.verification/
+dist/
+*.egg-info/
+.DS_Store

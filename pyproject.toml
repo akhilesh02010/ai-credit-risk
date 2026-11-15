@@ -1,0 +1,52 @@
+[project]
+name = "ai-credit-risk"
+version = "0.1.0"
+description = "Leakage-safe credit default modeling, explanations, SQL analysis, and dashboard"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Akhilesh Pandey" }]
+dependencies = [
+    "joblib>=1.4.2",
+    "matplotlib>=3.9.2",
+    "numpy>=2.0.2",
+    "pandas>=2.2.3",
+    "plotly>=5.24.1",
+    "scikit-learn>=1.5.2",
+    "seaborn>=0.13.2",
+    "shap>=0.46.0",
+    "streamlit>=1.40.0",
+    "xlrd>=2.0.1",
+    "xgboost>=2.1.2",
+]
+
+[project.scripts]
+credit-risk = "credit_risk.cli:main"
+
+[dependency-groups]
+dev = [
+    "ipykernel>=6.29.5",
+    "jupyterlab>=4.3.0",
+    "nbconvert>=7.16.4",
+    "pytest>=8.3.3",
+    "ruff>=0.7.3",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/credit_risk"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = [".uv-cache", ".uv-python", ".venv", "notebooks"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
